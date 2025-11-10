@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📊 Business Dashboard</title>
+  <style>
+    body { font-family: Arial; background: #f4f7fc; text-align: center; }
+    h1 { color: #2c3e50; }
+    table { width: 80%; margin: 20px auto; border-collapse: collapse; box-shadow: 0 0 10px #ccc; }
+    th, td { border: 1px solid #ddd; padding: 10px; }
+    th { background: #3498db; color: white; }
+    a, button { background: #27ae60; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; }
+    a:hover, button:hover { background: #219150; }
+    .summary { margin: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>📈 Business Analytics Dashboard</h1>
+  <div class="summary">
+    <p><strong>Total Sales:</strong> ₹{{ total_sales }}</p>
+    <p><strong>Total Profit:</strong> ₹{{ total_profit }}</p>
+  </div>
+  <a href="{% url 'upload_csv' %}">⬆️ Upload New CSV</a>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Profit</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+      <td>{{ d.date }}</td>
+      <td>{{ d.product }}</td>
+      <td>{{ d.quantity }}</td>
+      <td>₹{{ d.price }}</td>
+      <td>₹{{ d.profit }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
+
